@@ -14,17 +14,10 @@
 	<form method="post" action="/hello">
 		<!--th:value　속성 : 화면에서부터 컨트롤러클래스에 값을 넘겨주기 위해 -->
 		<!--th: 타임리프의 속성, 원래 input태그에 value속성이 존재하는데 그 value 속성 앞에 th:를 붙여주면 타임리프의 속성이라고 선언하는것과 같다. -->
-		<input type="text" name="text1" th:value="${text1_value}" />
-		<input type="submit" value="클릭" />	
+		<input type="text" name="text1" th:value="${text1_value}"/>
+		<input type="submit" value="클릭"/>	
 	</form>
-	
-	<br/>
-	
-	<form method="post" action="/hello/db">
-		종업원 ID 입력 :
-		<input type="text" name="text2" th:value="${text2_value}" />
-		<input type="submit" value="클릭" />	
-	</form>
+
 	
 </body>
 </html>
