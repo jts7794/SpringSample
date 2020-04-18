@@ -39,7 +39,7 @@ public class SignupForm {
 	@Pattern(regexp = "^[a-zA-Z0-9]+$")
 	private String password;
 	
-	@NotNull
+	@NotBlank
 	private String userName;
 	
 	
