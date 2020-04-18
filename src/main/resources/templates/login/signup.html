@@ -42,12 +42,20 @@
 				<tr>
 					<th class="active col-sm-3">아이디</th>
 					<td>
-						<!-- 에러 용 CSS 추가  -->
+						<!-- 에러 용 CSS 추가  
+								<div class="form-group" th:classappend="${#fields.hasErrors('userId')}?'has-error'">
+								에러가 발생한 경우 class속성에 has-error를 추가 (has-error는 부트스트랩의 클래스로 텍스트 박스 선을 빨갛게 바꾼다) 
+								우선 "${#fields.hasErrors('userId')}?'has-error'" 부분에서 true, false를 판단하고 
+								true인 경우 has-error라는 클래스를 추가한다 
+								false인 경우 아무것도 안한다 즉 에러메세지가 있는 필드만 has-error라는 클래스가 추가된다.
+						-->
 						<div class="form-group"
 							th:classappend="${#fields.hasErrors('userId')}?'has-error'">
 							<input type="text" class="form-control" th:field="*{userId}"/>
 							
-							<!-- 개별 에러메세지 표시 -->
+							<!-- 개별 에러메세지 표시
+									th:if속성에 조건식을 설정한다 true인 경우만 태그가 표시된다
+							 -->
 							<span class="text-danger"
 								th:if="${#fields.hasErrors('userId')}"
 								th:errors="*{userId}">
