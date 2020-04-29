@@ -27,35 +27,37 @@ public class SignupForm {
 	 * 
 	 * 참고 직접 에러메세지를 지정하는 방법
 	 * @NotBlank(message="패스워드를 입력해주세요")
+	 * 
+	 * group 속성 : 인터페이스의 클래스를 지정함으로써 필드와 그룹을 연결
 	 * **/
 	
 	// 필수 입력, 메일 형식
-	@NotBlank
-	@Email
+	@NotBlank(groups = ValidGroup1.class)
+	@Email(groups = ValidGroup2.class)
 	private String userId;
 	
-	@NotBlank
-	@Length(min = 4, max =100)
-	@Pattern(regexp = "^[a-zA-Z0-9]+$")
+	@NotBlank(groups = ValidGroup1.class)
+	@Length(min = 4, max =100, groups = ValidGroup2.class)
+	@Pattern(regexp = "^[a-zA-Z0-9]+$", groups = ValidGroup3.class)
 	private String password;
 	
-	@NotBlank
+	@NotBlank(groups = ValidGroup1.class)
 	private String userName;
 	
 	
 	// @DateTimeFormat : 화면으로부터 전해진 문자열을 일자형으로 교환
 	// pattern 속성을 이용해서 어떤 형태로 바꿀지 정할 수 있다.
-	@NotNull
+	@NotNull(groups = ValidGroup1.class)
 	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private Date birthday; 
 	
 	// 값이 20부터 100까지
-	@Min(20)
-	@Max(100)
+	@Min(value = 20, groups = ValidGroup2.class)
+	@Max(value = 100, groups = ValidGroup2.class)
 	private int age;
 	
 	// false가능
-	@AssertFalse
+	@AssertFalse(groups = ValidGroup2.class)
 	private boolean marriage; 
 	
 	/** 별지
